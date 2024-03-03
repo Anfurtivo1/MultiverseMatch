@@ -179,7 +179,7 @@ public class CartasManager : MonoBehaviour
             carta.AplicarMaterialTrasero();
 
             carta.CrearMaterialFrontal(_materialList[posicionRandomMaterial], _texturePathList[posicionRandomMaterial]);
-            carta.AplicarMaterialFrontal();
+            //carta.AplicarMaterialFrontal();
 
             vecesAplicado[posicionRandomMaterial] += 1;
             materialForzado = false;
@@ -229,17 +229,13 @@ public class CartasManager : MonoBehaviour
         else
         {
             Debug.Log("No son iguales");
-            yield return new WaitForSeconds(0.001f);
-
             _primeraCartaRevelada.animator.SetTrigger("Voltear");
             _segundaCartaRevelada.animator.SetTrigger("Voltear");
-
-            _primeraCartaRevelada.AplicarMaterialFrontal();
-            _segundaCartaRevelada.AplicarMaterialFrontal();
 
             _primeraCartaRevelada.pulsada = false;
             _segundaCartaRevelada.pulsada = false;
 
+            yield return new WaitForSeconds(0.1f);
         }
 
         intentos++;
