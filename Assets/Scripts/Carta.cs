@@ -6,16 +6,22 @@ public class Carta : MonoBehaviour
 {
     private Material _material1;
     private Material _material2;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void OnMouseDown()
+    {
+        animator.SetTrigger("Rotar");
     }
 
     public void CrearMaterial1(Material mat, string texturepath)

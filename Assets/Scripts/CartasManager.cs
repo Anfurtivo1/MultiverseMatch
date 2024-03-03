@@ -10,14 +10,44 @@ public class CartasManager : MonoBehaviour
     [HideInInspector]
     public List<Carta> cartaList;
 
+    public bool scaledDown;
     public Vector2 posicionInicial;
+
     public Vector2 espacioCartas;
+    public Vector2 espacioCartas15 = new Vector2(1.08f,1.22f);
+    public Vector2 espacioCartas20 = new Vector2(1.08f,1.0f);
+
+    public Vector3 cartasScaledDown = new Vector3 (0.9f, 00.9f, 0001f);
 
 
     private List<Material> _materialList = new List<Material>();
     private List<string> _texturePathList = new List<string>();
     private Material _primerMaterial;
     private string _primeraRutaTextura;
+
+    [HideInInspector]
+    public EstadoJuego estadoJuego;
+    [HideInInspector]
+    public EstadoCarta estadoCarta;
+
+
+    public enum EstadoJuego
+    {
+        SinAccion,
+        Moviendose,
+        BorrarPieza,
+        VolverAGirar,
+        Comprobando,
+        Ganar
+    }
+
+    public enum EstadoCarta
+    {
+        NoRevelada,
+        Revelada,
+        DosReveladas
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,17 +56,17 @@ public class CartasManager : MonoBehaviour
 
         if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == OpcionesNivelesManager.CantidadCartas.Cartas10)
         {
-            SpawnearCarta(4, 5, posicionInicial, espacioCartas);
+            SpawnearCarta(4, 5, posicionInicial, espacioCartas,false);
             MoverCarta(4, 5, posicionInicial, espacioCartas);
         }else if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == OpcionesNivelesManager.CantidadCartas.Cartas15)
         {
-            SpawnearCarta(5, 6, posicionInicial, espacioCartas);
-            MoverCarta(5, 6, posicionInicial, espacioCartas);
+            SpawnearCarta(5, 6, posicionInicial, espacioCartas15, false);
+            MoverCarta(5, 6, posicionInicial, espacioCartas15);
         }
         else if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == OpcionesNivelesManager.CantidadCartas.Cartas20)
         {
-            SpawnearCarta(5, 8, posicionInicial, espacioCartas);
-            MoverCarta(5, 8, posicionInicial, espacioCartas);
+            SpawnearCarta(5, 8, posicionInicial, espacioCartas20,true);
+            MoverCarta(5, 8, posicionInicial, espacioCartas20);
         }
 
 
@@ -78,13 +108,18 @@ public class CartasManager : MonoBehaviour
 
     }
 
-    private void SpawnearCarta(int filas, int columnas, Vector2 posicion, Vector2 espacio)
+    private void SpawnearCarta(int filas, int columnas, Vector2 posicion, Vector2 espacio, bool scaledDown)
     {
         for (int col = 0; col < columnas; col++)
         {
             for (int fila = 0; fila < filas; fila++)
             {
                 var cartaTemporal = (Carta)Instantiate(cartaPrefab, cartaZonaSpawn.position, cartaPrefab.transform.rotation);
+
+                if (scaledDown)
+                {
+                    cartaTemporal.transform.localScale = cartasScaledDown;
+                }
 
                 cartaTemporal.name = cartaTemporal.name + "columna " + col + " fila " + fila;
                 cartaList.Add(cartaTemporal);
