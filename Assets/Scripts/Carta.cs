@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Carta : MonoBehaviour
 {
-    private Material _material1;
-    private Material _material2;
-    private Animator animator;
+    private Material _materialTrasero;
+    private Material _materialFrontal;
+    public Animator animator;
+    public bool pulsada;
+    public int cartaId;
+    public CartasManager cartaManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        pulsada = false;
         animator = this.GetComponent<Animator>();
     }
 
@@ -21,29 +26,35 @@ public class Carta : MonoBehaviour
 
     public void OnMouseDown()
     {
-        animator.SetTrigger("Rotar");
+        if (pulsada == false)
+        {
+            animator.SetTrigger("Rotar");
+            pulsada = true;
+            //
+            cartaManager.GirarCarta(this);
+        }
     }
 
-    public void CrearMaterial1(Material mat, string texturepath)
+    public void CrearMaterialTrasero(Material mat, string texturepath)
     {
-        _material1 = mat;
-        _material1.mainTexture = Resources.Load(texturepath,typeof(Texture2D)) as Texture2D;
+        _materialTrasero = mat;
+        _materialTrasero.mainTexture = Resources.Load(texturepath,typeof(Texture2D)) as Texture2D;
     }
 
-    public void CrearMaterial2(Material mat, string texturepath)
+    public void CrearMaterialFrontal(Material mat, string texturepath)
     {
-        _material2 = mat;
-        _material2.mainTexture = Resources.Load(texturepath, typeof(Texture2D)) as Texture2D;
+        _materialFrontal = mat;
+        _materialFrontal.mainTexture = Resources.Load(texturepath, typeof(Texture2D)) as Texture2D;
     }
 
-    public void AplicarMaterial1()
+    public void AplicarMaterialTrasero()
     {
-        gameObject.GetComponent<Renderer>().material = _material1;
+        gameObject.GetComponent<Renderer>().material = _materialTrasero;
     }
 
-    public void AplicarMaterial2()
+    public void AplicarMaterialFrontal()
     {
-        gameObject.GetComponent<Renderer>().material = _material2;
+        gameObject.GetComponent<Renderer>().material = _materialFrontal;
     }
 
 }

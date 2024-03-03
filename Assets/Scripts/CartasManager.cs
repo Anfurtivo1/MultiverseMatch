@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CartasManager : MonoBehaviour
@@ -25,29 +26,17 @@ public class CartasManager : MonoBehaviour
     private Material _primerMaterial;
     private string _primeraRutaTextura;
 
-    [HideInInspector]
-    public EstadoJuego estadoJuego;
-    [HideInInspector]
-    public EstadoCarta estadoCarta;
+    private Carta _primeraCartaRevelada;
+    private Carta _segundaCartaRevelada;
 
+    private int score;
+    private int intentos;
 
-    public enum EstadoJuego
-    {
-        SinAccion,
-        Moviendose,
-        BorrarPieza,
-        VolverAGirar,
-        Comprobando,
-        Ganar
-    }
+    [SerializeField]
+    private TextMeshProUGUI _scoreText;
 
-    public enum EstadoCarta
-    {
-        NoRevelada,
-        Revelada,
-        DosReveladas
-    }
-
+    [SerializeField]
+    private TextMeshProUGUI _intentosText;
 
     // Start is called before the first frame update
     void Start()
@@ -70,12 +59,6 @@ public class CartasManager : MonoBehaviour
         }
 
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void CargarMateriales()
@@ -115,6 +98,7 @@ public class CartasManager : MonoBehaviour
             for (int fila = 0; fila < filas; fila++)
             {
                 var cartaTemporal = (Carta)Instantiate(cartaPrefab, cartaZonaSpawn.position, cartaPrefab.transform.rotation);
+                cartaTemporal.cartaManager = this;
 
                 if (scaledDown)
                 {
@@ -190,11 +174,12 @@ public class CartasManager : MonoBehaviour
                 }
             }
 
-            carta.CrearMaterial1(_primerMaterial, _primeraRutaTextura);
-            carta.AplicarMaterial1();
+            carta.cartaId = posicionRandomMaterial;
+            carta.CrearMaterialTrasero(_primerMaterial, _primeraRutaTextura);
+            carta.AplicarMaterialTrasero();
 
-            carta.CrearMaterial2(_materialList[posicionRandomMaterial], _texturePathList[posicionRandomMaterial]);
-            carta.AplicarMaterial2();
+            carta.CrearMaterialFrontal(_materialList[posicionRandomMaterial], _texturePathList[posicionRandomMaterial]);
+            carta.AplicarMaterialFrontal();
 
             vecesAplicado[posicionRandomMaterial] += 1;
             materialForzado = false;
@@ -215,5 +200,56 @@ public class CartasManager : MonoBehaviour
 
         
     }
+
+    public void GirarCarta(Carta carta)
+    {
+        if (_primeraCartaRevelada == null)
+        {
+            _primeraCartaRevelada = carta;
+        }
+        else
+        {
+            _segundaCartaRevelada = carta;
+            StartCoroutine(ComprobarPareja());
+        }
+    }
+
+    private IEnumerator ComprobarPareja()
+    {
+        string carta1Id =""+ _primeraCartaRevelada.cartaId;
+        string carta2Id = ""+ _segundaCartaRevelada.cartaId;
+
+        Debug.Log("La primera carta tiene un id de: "+ carta1Id + " y la segunda carta tiene un id de: "+ carta2Id);
+        if (carta1Id == carta2Id)
+        {
+            score++;
+            _scoreText.text = "Score: " + score;
+            Debug.Log("Has anotado un punto mas");
+        }
+        else
+        {
+            Debug.Log("No son iguales");
+            yield return new WaitForSeconds(0.001f);
+
+            _primeraCartaRevelada.animator.SetTrigger("Voltear");
+            _segundaCartaRevelada.animator.SetTrigger("Voltear");
+
+            _primeraCartaRevelada.AplicarMaterialFrontal();
+            _segundaCartaRevelada.AplicarMaterialFrontal();
+
+            _primeraCartaRevelada.pulsada = false;
+            _segundaCartaRevelada.pulsada = false;
+
+        }
+
+        intentos++;
+        _intentosText.text = "Intentos: "+intentos;
+
+        _primeraCartaRevelada = null;
+        _segundaCartaRevelada = null;
+        
+    }
+
+
 
 }

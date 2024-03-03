@@ -9,7 +9,7 @@ public class OpcionesNivelesManager : MonoBehaviour
     private const int numeroOpciones = 2;
 
 
-    private Dictionary<EstiloJuego, string> _estiloCarta = new Dictionary<EstiloJuego, string>();
+    private Dictionary<EstiloJuego, string> _estiloCarta;
 
 
     private Juego _juego;
@@ -62,8 +62,11 @@ public class OpcionesNivelesManager : MonoBehaviour
     {
         SetCategoriaCartaDirectorio(); 
         _juego = new Juego();
+        _estiloCarta = new Dictionary<EstiloJuego, string>();
         ResetOpciones();
         
+
+
     }
 
     public void ElegirCantidadCartas(CantidadCartas cantidadCartas)
