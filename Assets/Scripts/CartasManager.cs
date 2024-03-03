@@ -13,17 +13,33 @@ public class CartasManager : MonoBehaviour
     public Vector2 posicionInicial;
     public Vector2 espacioCartas;
 
-    private List<Material> _materialList;
-    private List<string> _texturePathList;
+
+    private List<Material> _materialList = new List<Material>();
+    private List<string> _texturePathList = new List<string>();
     private Material _primerMaterial;
-    private string _primerTextureList;
+    private string _primeraRutaTextura;
 
     // Start is called before the first frame update
     void Start()
     {
         CargarMateriales();
-        SpawnearCarta(4,6,posicionInicial,espacioCartas);
-        MoverCarta(4, 6, posicionInicial, espacioCartas);
+
+        if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == OpcionesNivelesManager.CantidadCartas.Cartas10)
+        {
+            SpawnearCarta(4, 5, posicionInicial, espacioCartas);
+            MoverCarta(4, 5, posicionInicial, espacioCartas);
+        }else if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == OpcionesNivelesManager.CantidadCartas.Cartas15)
+        {
+            SpawnearCarta(5, 6, posicionInicial, espacioCartas);
+            MoverCarta(5, 6, posicionInicial, espacioCartas);
+        }
+        else if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == OpcionesNivelesManager.CantidadCartas.Cartas20)
+        {
+            SpawnearCarta(5, 8, posicionInicial, espacioCartas);
+            MoverCarta(5, 8, posicionInicial, espacioCartas);
+        }
+
+
     }
 
     // Update is called once per frame
@@ -34,6 +50,31 @@ public class CartasManager : MonoBehaviour
 
     public void CargarMateriales()
     {
+        var rutaMaterial = OpcionesNivelesManager.instanciaOpcionesNivel.GetNombreDirectorioMaterial();
+        var rutaTexturaMaterial = OpcionesNivelesManager.instanciaOpcionesNivel.GetTexturaCartaCategoriaDirectorio();
+        var numeroCartas = (int)OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas();
+
+        const string materialBase = "Carta ";
+        var nombrePrimerMaterial = "Trasero";
+
+        for (int i = 1; i <= numeroCartas; i++)
+        {
+            var directorioActual = rutaMaterial + materialBase + i;
+            Material mat = Resources.Load(directorioActual, typeof(Material)) as Material;
+            _materialList.Add(mat);
+
+
+
+            var directorioActualTextura = rutaTexturaMaterial + materialBase + i;
+            _texturePathList.Add(directorioActualTextura);
+        }
+        //
+        _primeraRutaTextura = rutaTexturaMaterial + nombrePrimerMaterial;
+        _primerMaterial = Resources.Load(rutaMaterial + nombrePrimerMaterial, typeof(Material)) as Material;
+
+
+
+
 
     }
 
@@ -43,13 +84,16 @@ public class CartasManager : MonoBehaviour
         {
             for (int fila = 0; fila < filas; fila++)
             {
-                var cartaTemporal = (Carta)Instantiate(cartaPrefab, cartaZonaSpawn.position, cartaZonaSpawn.transform.rotation);
+                var cartaTemporal = (Carta)Instantiate(cartaPrefab, cartaZonaSpawn.position, cartaPrefab.transform.rotation);
 
                 cartaTemporal.name = cartaTemporal.name + "columna " + col + " fila " + fila;
                 cartaList.Add(cartaTemporal);
 
             }
         }
+
+        AplicarTexturas();
+
     }
 
     private void MoverCarta(int filas, int columnas, Vector2 posicion, Vector2 espacio)
@@ -66,6 +110,60 @@ public class CartasManager : MonoBehaviour
 
             }
             
+        }
+
+    }
+
+    public void AplicarTexturas()
+    {
+        var posicionRandomMaterial = Random.Range(0,_materialList.Count);
+        var vecesAplicado = new int[_materialList.Count];
+
+        for (int i = 0; i < _materialList.Count; i++)
+        {
+            vecesAplicado[i] = 0;
+        }
+
+        foreach (var carta in cartaList)
+        {
+            var randomAnterior = posicionRandomMaterial;
+            //
+            var counter = 0;
+            var materialForzado = false;
+
+            while (vecesAplicado[posicionRandomMaterial] >= 2 || ((randomAnterior == posicionRandomMaterial) && !materialForzado))
+            {
+                posicionRandomMaterial = Random.Range(0,_materialList.Count);
+                //
+                counter++;
+                if (counter > 100)
+                {
+                    for (int i = 0; i < _materialList.Count; i++)
+                    {
+                        if (vecesAplicado[i] <2)
+                        {
+                            posicionRandomMaterial = i;
+                            materialForzado = true;
+                        }
+                    }
+                    //
+                    if (materialForzado == false)
+                    {
+                        return;
+                    }
+
+                }
+            }
+
+            carta.CrearMaterial1(_primerMaterial, _primeraRutaTextura);
+            carta.AplicarMaterial1();
+
+            carta.CrearMaterial2(_materialList[posicionRandomMaterial], _texturePathList[posicionRandomMaterial]);
+            carta.AplicarMaterial2();
+
+            vecesAplicado[posicionRandomMaterial] += 1;
+            materialForzado = false;
+
         }
 
     }

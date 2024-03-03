@@ -9,6 +9,7 @@ public class OpcionesNivelesManager : MonoBehaviour
     private const int numeroOpciones = 2;
 
 
+    private Dictionary<EstiloJuego, string> _estiloCarta = new Dictionary<EstiloJuego, string>();
 
 
     private Juego _juego;
@@ -59,8 +60,10 @@ public class OpcionesNivelesManager : MonoBehaviour
     
     void Start()
     {
+        SetCategoriaCartaDirectorio(); 
         _juego = new Juego();
         ResetOpciones();
+        
     }
 
     public void ElegirCantidadCartas(CantidadCartas cantidadCartas)
@@ -102,6 +105,32 @@ public class OpcionesNivelesManager : MonoBehaviour
     public bool OpcionesPreparadas()
     {
         return _opciones == numeroOpciones;
+    }
+
+    public string GetNombreDirectorioMaterial()
+    {
+        return "Materiales/";
+    }
+
+    public string GetTexturaCartaCategoriaDirectorio()
+    {
+        
+        if (_estiloCarta.ContainsKey(_juego.estiloJuego))
+        {
+            return "Cartas/" + _estiloCarta[_juego.estiloJuego]+"/";
+        }
+        else
+        {
+            Debug.Log("El directorio:"+ "Resources/Cartas/" + _estiloCarta[_juego.estiloJuego] + "no existe");
+            return "";
+        }
+    }
+    
+    private void SetCategoriaCartaDirectorio()
+    {
+        _estiloCarta.Add(EstiloJuego.Oeste, "Oeste");
+        _estiloCarta.Add(EstiloJuego.Espacio, "Espacio");
+        _estiloCarta.Add(EstiloJuego.Medieval, "Medieval");
     }
 
 }
