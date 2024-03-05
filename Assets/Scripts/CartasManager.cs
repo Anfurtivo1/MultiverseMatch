@@ -35,6 +35,8 @@ public class CartasManager : MonoBehaviour
     public float tiempo = 19;
 
     public bool empezarTiempo = false;
+    public bool ganar = false;
+    public bool girable = true;
 
     [SerializeField]
     private TextMeshProUGUI _scoreText;
@@ -44,6 +46,9 @@ public class CartasManager : MonoBehaviour
 
     
     public TextMeshProUGUI tiempoText;
+
+    public GameObject menuGanar;
+    public GameObject menuPerder;
 
     // Start is called before the first frame update
     void Start()
@@ -71,7 +76,7 @@ public class CartasManager : MonoBehaviour
 
     private void Update()
     {
-        if (empezarTiempo && tiempo >= 0)
+        if (empezarTiempo && tiempo >= 0 && ganar == false)
         {
             float nuevoTiempo = tiempo - Time.deltaTime;
             tiempo = nuevoTiempo;
@@ -79,26 +84,37 @@ public class CartasManager : MonoBehaviour
             tiempoText.text = "Tiempo: " + nuevoTiempo.ToString("f0");
         }
 
-        Debug.Log("El tiempo es: "+ tiempo.ToString("f0"));
+        //Debug.Log("El tiempo es: "+ tiempo.ToString("f0"));
 
         if (tiempo <= 0)
         {
             Debug.Log("Has perdido");
+            menuPerder.SetActive(true);
+            girable = false;
         }
 
         if(OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas10 && score == 10)
         {
             Debug.Log("Has ganado");
+            ganar = true;
+            girable = false;
+            menuGanar.SetActive(true);
         }
 
         if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas15 && score == 15)
         {
             Debug.Log("Has ganado");
+            ganar = true;
+            girable = false;
+            menuGanar.SetActive(true);
         }
 
         if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas20 && score == 20)
         {
             Debug.Log("Has ganado");
+            ganar = true;
+            girable = false;
+            menuGanar.SetActive(true);
         }
 
     }

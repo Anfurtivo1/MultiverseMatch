@@ -26,7 +26,7 @@ public class Carta : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (pulsada == false)
+        if (pulsada == false && cartaManager.girable == true)
         {
             animator.SetTrigger("Rotar");
             pulsada = true;
