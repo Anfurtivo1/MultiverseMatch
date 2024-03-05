@@ -21,6 +21,8 @@ public class CartasManager : MonoBehaviour
 
     public Vector3 cartasScaledDown = new Vector3 (0.9f, 0.9f, 0.01f);
 
+    public int velocidadMovimientoCarta = 40;
+
 
     private List<Material> _materialList = new List<Material>();
     private List<string> _texturePathList = new List<string>();
@@ -88,6 +90,7 @@ public class CartasManager : MonoBehaviour
 
         if (tiempo <= 0)
         {
+            tiempo = 0;
             Debug.Log("Has perdido");
             menuPerder.SetActive(true);
             girable = false;
@@ -181,7 +184,7 @@ public class CartasManager : MonoBehaviour
         {
             for (int fila = 0; fila < filas; fila++)
             {
-                var moverPosicion = new Vector3((posicion.x + (espacio.x * fila)),(posicion.y - (espacio.y * col)),0.0f);
+                var moverPosicion = new Vector3((posicion.x + (espacio.x * fila)),(posicion.y - (espacio.y * col)),87.0f);
                 StartCoroutine(MoverPosicionCarta(moverPosicion, cartaList[index]));
                 index++;
 
@@ -248,11 +251,11 @@ public class CartasManager : MonoBehaviour
 
     IEnumerator MoverPosicionCarta(Vector3 posicion, Carta carta)
     {
-        var velocidadMovimiento = 80;
+        
 
         while (carta.transform.position != posicion)
         {
-            carta.transform.position = Vector3.MoveTowards(carta.transform.position, posicion, velocidadMovimiento * Time.deltaTime);
+            carta.transform.position = Vector3.MoveTowards(carta.transform.position, posicion, velocidadMovimientoCarta * Time.deltaTime);
             yield return 0;
         }
 
@@ -298,7 +301,7 @@ public class CartasManager : MonoBehaviour
             _primeraCartaRevelada.pulsada = false;
             _segundaCartaRevelada.pulsada = false;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.00001f);
         }
 
         intentos++;

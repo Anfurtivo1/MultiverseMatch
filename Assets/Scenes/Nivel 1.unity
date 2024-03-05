@@ -217,7 +217,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291815601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1081.0002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -294,7 +294,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318574509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1081}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1018,9 +1018,11 @@ MonoBehaviour:
   espacioCartas15: {x: 1.08, y: 1.22}
   espacioCartas20: {x: 1.08, y: 1}
   cartasScaledDown: {x: 0.9, y: 0.9, z: 0.001}
-  tiempo: 20
+  velocidadMovimientoCarta: 40
+  tiempo: 60
   empezarTiempo: 0
   ganar: 0
+  girable: 1
   _scoreText: {fileID: 1825296385}
   _intentosText: {fileID: 1712581901}
   tiempoText: {fileID: 559099128}
