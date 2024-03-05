@@ -33,6 +33,8 @@ public class MainMenuController : MonoBehaviour
 
     public void BtnVolverMenuPrincipal(string scene)
     {
+
+        OpcionesNivelesManager.instanciaOpcionesNivel.ResetOpciones();
         SceneManager.LoadScene(scene);
     }
 

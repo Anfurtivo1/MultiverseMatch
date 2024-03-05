@@ -9,13 +9,13 @@ public class OpcionesNivelesManager : MonoBehaviour
     private const int numeroOpciones = 2;
 
 
-    private Dictionary<EstiloJuego, string> _estiloCarta = new Dictionary<EstiloJuego, string>();
+    private Dictionary<EstiloJuego, string> _estiloCarta;
 
 
     private Juego _juego;
 
     //usamos un singleton para luego aplicarles los valores del nivel
-    public static OpcionesNivelesManager instanciaOpcionesNivel = new OpcionesNivelesManager();
+    public static OpcionesNivelesManager instanciaOpcionesNivel;
 
     public enum CantidadCartas
     {
@@ -45,6 +45,7 @@ public class OpcionesNivelesManager : MonoBehaviour
 
     private void Awake()
     {
+        _estiloCarta = new Dictionary<EstiloJuego, string>();
         if (instanciaOpcionesNivel == null)
         {
             DontDestroyOnLoad(this);
@@ -63,8 +64,6 @@ public class OpcionesNivelesManager : MonoBehaviour
         SetCategoriaCartaDirectorio(); 
         _juego = new Juego();
         ResetOpciones();
-        
-
 
     }
 

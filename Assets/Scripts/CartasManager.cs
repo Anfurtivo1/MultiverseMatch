@@ -18,7 +18,7 @@ public class CartasManager : MonoBehaviour
     public Vector2 espacioCartas15 = new Vector2(1.08f,1.22f);
     public Vector2 espacioCartas20 = new Vector2(1.08f,1.0f);
 
-    public Vector3 cartasScaledDown = new Vector3 (0.9f, 00.9f, 0001f);
+    public Vector3 cartasScaledDown = new Vector3 (0.9f, 0.9f, 0.01f);
 
 
     private List<Material> _materialList = new List<Material>();
