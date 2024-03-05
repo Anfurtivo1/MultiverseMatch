@@ -21,7 +21,7 @@ public class Carta : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnMouseDown()
@@ -33,6 +33,9 @@ public class Carta : MonoBehaviour
             //
             cartaManager.GirarCarta(this);
         }
+
+        cartaManager.empezarTiempo = true;
+
     }
 
     public void CrearMaterialTrasero(Material mat, string texturepath)

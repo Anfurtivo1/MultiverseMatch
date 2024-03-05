@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static OpcionesNivelesManager;
 
 public class CartasManager : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class CartasManager : MonoBehaviour
 
     private int score;
     private int intentos;
+    public float tiempo = 19;
+
+    public bool empezarTiempo = false;
 
     [SerializeField]
     private TextMeshProUGUI _scoreText;
@@ -38,9 +42,13 @@ public class CartasManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _intentosText;
 
+    
+    public TextMeshProUGUI tiempoText;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         CargarMateriales();
 
         if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == OpcionesNivelesManager.CantidadCartas.Cartas10)
@@ -58,6 +66,40 @@ public class CartasManager : MonoBehaviour
             MoverCarta(5, 8, posicionInicial, espacioCartas20);
         }
 
+
+    }
+
+    private void Update()
+    {
+        if (empezarTiempo && tiempo >= 0)
+        {
+            float nuevoTiempo = tiempo - Time.deltaTime;
+            tiempo = nuevoTiempo;
+            
+            tiempoText.text = "Tiempo: " + nuevoTiempo.ToString("f0");
+        }
+
+        Debug.Log("El tiempo es: "+ tiempo.ToString("f0"));
+
+        if (tiempo <= 0)
+        {
+            Debug.Log("Has perdido");
+        }
+
+        if(OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas10 && score == 10)
+        {
+            Debug.Log("Has ganado");
+        }
+
+        if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas15 && score == 15)
+        {
+            Debug.Log("Has ganado");
+        }
+
+        if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas20 && score == 20)
+        {
+            Debug.Log("Has ganado");
+        }
 
     }
 
@@ -222,12 +264,17 @@ public class CartasManager : MonoBehaviour
         Debug.Log("La primera carta tiene un id de: "+ carta1Id + " y la segunda carta tiene un id de: "+ carta2Id);
         if (carta1Id == carta2Id)
         {
+            tiempo = tiempo + 5;
+
             score++;
             _scoreText.text = "Score: " + score;
             Debug.Log("Has anotado un punto mas");
         }
         else
         {
+            tiempo = tiempo - 5;
+
+
             Debug.Log("No son iguales");
             _primeraCartaRevelada.animator.SetTrigger("Voltear");
             _segundaCartaRevelada.animator.SetTrigger("Voltear");
