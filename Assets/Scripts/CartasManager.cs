@@ -280,19 +280,23 @@ public class CartasManager : MonoBehaviour
         string carta1Id =""+ _primeraCartaRevelada.cartaId;
         string carta2Id = ""+ _segundaCartaRevelada.cartaId;
 
+        girable = false;
+
         Debug.Log("La primera carta tiene un id de: "+ carta1Id + " y la segunda carta tiene un id de: "+ carta2Id);
         if (carta1Id == carta2Id)
         {
-            tiempo = tiempo + 5;
+            tiempo = tiempo + 20;
 
             score++;
             _scoreText.text = "Score: " + score;
             Debug.Log("Has anotado un punto mas");
+            girable = true;
         }
         else
         {
             tiempo = tiempo - 5;
 
+            yield return new WaitForSeconds(2);
 
             Debug.Log("No son iguales");
             _primeraCartaRevelada.animator.SetTrigger("Voltear");
@@ -300,8 +304,8 @@ public class CartasManager : MonoBehaviour
 
             _primeraCartaRevelada.pulsada = false;
             _segundaCartaRevelada.pulsada = false;
+            girable = true;
 
-            yield return new WaitForSeconds(0.00001f);
         }
 
         intentos++;
