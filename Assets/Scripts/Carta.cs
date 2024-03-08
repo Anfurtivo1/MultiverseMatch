@@ -21,18 +21,21 @@ public class Carta : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnMouseDown()
     {
-        if (pulsada == false)
+        if (pulsada == false && cartaManager.girable == true)
         {
             animator.SetTrigger("Rotar");
             pulsada = true;
             //
             cartaManager.GirarCarta(this);
         }
+
+        cartaManager.empezarTiempo = true;
+
     }
 
     public void CrearMaterialTrasero(Material mat, string texturepath)
