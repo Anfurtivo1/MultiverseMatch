@@ -52,6 +52,16 @@ public class CartasManager : MonoBehaviour
     public GameObject menuGanar;
     public GameObject menuPerder;
 
+    public GameObject bgOeste;
+    public GameObject bgEspacio;
+    public GameObject bgMedieval;
+
+    public GameObject tapeteOeste;
+    public GameObject tapeteEspacio;
+    public GameObject tapeteMedieval;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +81,38 @@ public class CartasManager : MonoBehaviour
         {
             SpawnearCarta(5, 8, posicionInicial, espacioCartas20,true);
             MoverCarta(5, 8, posicionInicial, espacioCartas20);
+        }
+
+        if (OpcionesNivelesManager.instanciaOpcionesNivel.GetEsitloJuego() == EstiloJuego.Oeste)
+        {
+            bgOeste.SetActive(true);
+            bgEspacio.SetActive(false);
+            bgMedieval.SetActive(false);
+
+            tapeteOeste.SetActive(true);
+            tapeteEspacio.SetActive(false);
+            tapeteMedieval.SetActive(false);
+        }
+        else if (OpcionesNivelesManager.instanciaOpcionesNivel.GetEsitloJuego() == EstiloJuego.Espacio)
+        {
+            bgOeste.SetActive(false);
+            bgEspacio.SetActive(true);
+            bgMedieval.SetActive(false);
+
+            tapeteOeste.SetActive(false);
+            tapeteEspacio.SetActive(true);
+            tapeteMedieval.SetActive(false);
+        }
+        else if (OpcionesNivelesManager.instanciaOpcionesNivel.GetEsitloJuego() == EstiloJuego.Medieval)
+        {
+            bgOeste.SetActive(false);
+            bgEspacio.SetActive(false);
+            bgMedieval.SetActive(true);
+
+            
+            tapeteOeste.SetActive(false);
+            tapeteEspacio.SetActive(false);
+            tapeteMedieval.SetActive(true);
         }
 
 
