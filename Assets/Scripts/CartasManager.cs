@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static OpcionesNivelesManager;
 
 public class CartasManager : MonoBehaviour
@@ -128,38 +129,49 @@ public class CartasManager : MonoBehaviour
             tiempoText.text = "Tiempo: " + nuevoTiempo.ToString("f0");
         }
 
-        //Debug.Log("El tiempo es: "+ tiempo.ToString("f0"));
-
+        //Menu de perder
         if (tiempo <= 0)
         {
-            tiempo = 0;
-            Debug.Log("Has perdido");
-            menuPerder.SetActive(true);
-            girable = false;
+            //tiempo = 0;
+            //Debug.Log("Has perdido");
+            //menuPerder.SetActive(true);
+            //girable = false;
+
+            instanciaOpcionesNivel.scoreFinal = score;
+            instanciaOpcionesNivel.intentosFinales = intentos;
+
+            SceneManager.LoadScene("MenuPerder");
+
         }
 
+        //Menu de ganar
         if(OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas10 && score == 10)
         {
-            Debug.Log("Has ganado");
-            ganar = true;
-            girable = false;
-            menuGanar.SetActive(true);
+            //Debug.Log("Has ganado");
+            //ganar = true;
+            //girable = false;
+            //menuGanar.SetActive(true);
+            instanciaOpcionesNivel.scoreFinal = score;
+            instanciaOpcionesNivel.intentosFinales = intentos;
+
+            SceneManager.LoadScene("MenuGanar");
+
         }
 
         if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas15 && score == 15)
         {
-            Debug.Log("Has ganado");
-            ganar = true;
-            girable = false;
-            menuGanar.SetActive(true);
+            //Debug.Log("Has ganado");
+            //ganar = true;
+            //girable = false;
+            //menuGanar.SetActive(true);
         }
 
         if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas20 && score == 20)
         {
-            Debug.Log("Has ganado");
-            ganar = true;
-            girable = false;
-            menuGanar.SetActive(true);
+            //Debug.Log("Has ganado");
+            //ganar = true;
+            //girable = false;
+            //menuGanar.SetActive(true);
         }
 
     }
@@ -336,7 +348,6 @@ public class CartasManager : MonoBehaviour
         }
         else
         {
-            tiempo = tiempo - 5;
 
             yield return new WaitForSeconds(2);
 

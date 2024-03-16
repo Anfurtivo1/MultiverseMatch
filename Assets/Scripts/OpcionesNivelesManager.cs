@@ -17,6 +17,9 @@ public class OpcionesNivelesManager : MonoBehaviour
     //usamos un singleton para luego aplicarles los valores del nivel
     public static OpcionesNivelesManager instanciaOpcionesNivel;
 
+    public int scoreFinal;
+    public int intentosFinales;
+
     public enum CantidadCartas
     {
         sinCartas = 0,
