@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 43, y: 185.86}
+  m_AnchoredPosition: {x: 31, y: 279}
   m_SizeDelta: {x: 488.13, y: 63.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138942491
@@ -456,11 +456,11 @@ RectTransform:
   m_Father: {fileID: 894585638}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -409, y: -29}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 52, y: 183}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &559099128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tiempo: 60'
+  m_text: 'Tiempo restante: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1124,8 +1124,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 63.1, y: -19}
-  m_SizeDelta: {x: 1475.47, y: 998.72}
+  m_AnchoredPosition: {x: 12, y: -49}
+  m_SizeDelta: {x: 1475.47, y: 939.69}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1887649519
 MonoBehaviour:
@@ -1211,6 +1211,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoScore: {fileID: 1825296385}
   textoIntentos: {fileID: 1712581901}
+  textoTiempoRestante: {fileID: 559099128}
+  bgOeste: {fileID: 1965575290}
+  bgEspacio: {fileID: 777112863}
+  bgMedieval: {fileID: 1748646794}
 --- !u!1 &1965575290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,7 +1368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 637331291378150680, guid: 5db516792166d134ab139bb24f14a71b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -616
+      value: -627
       objectReference: {fileID: 0}
     - target: {fileID: 637331291378150680, guid: 5db516792166d134ab139bb24f14a71b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -153,6 +153,7 @@ public class CartasManager : MonoBehaviour
             //menuGanar.SetActive(true);
             instanciaOpcionesNivel.scoreFinal = score;
             instanciaOpcionesNivel.intentosFinales = intentos;
+            instanciaOpcionesNivel.tiempoRestante = tiempo.ToString("f0");
 
             SceneManager.LoadScene("MenuGanar");
 
@@ -164,6 +165,12 @@ public class CartasManager : MonoBehaviour
             //ganar = true;
             //girable = false;
             //menuGanar.SetActive(true);
+
+            instanciaOpcionesNivel.scoreFinal = score;
+            instanciaOpcionesNivel.intentosFinales = intentos;
+            instanciaOpcionesNivel.tiempoRestante = tiempo.ToString("f0");
+
+            SceneManager.LoadScene("MenuGanar");
         }
 
         if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas20 && score == 20)
@@ -172,6 +179,12 @@ public class CartasManager : MonoBehaviour
             //ganar = true;
             //girable = false;
             //menuGanar.SetActive(true);
+
+            instanciaOpcionesNivel.scoreFinal = score;
+            instanciaOpcionesNivel.intentosFinales = intentos;
+            instanciaOpcionesNivel.tiempoRestante = tiempo.ToString("f0");
+
+            SceneManager.LoadScene("MenuGanar");
         }
 
     }

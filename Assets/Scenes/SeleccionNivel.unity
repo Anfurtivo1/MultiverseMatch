@@ -210,7 +210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &257880238
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1310,6 +1310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreFinal: 0
   intentosFinales: 0
+  tiempoRestante: 
 --- !u!1 &1423660082
 GameObject:
   m_ObjectHideFlags: 0

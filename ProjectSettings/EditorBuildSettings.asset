@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SeleccionNivel.unity
     guid: fdb3b3979d85de44abe63adc215d8ec5
   - enabled: 1
-    path: Assets/Scenes/Ranking.unity
-    guid: 258b7ca82a64e4c408d529c2f11cc1ff
-  - enabled: 1
     path: Assets/Scenes/OpcionesMenuPrincipal.unity
     guid: ce11566f5a72fe44fa7baaa0e58cf030
   - enabled: 1
@@ -29,10 +26,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuPerder.unity
     guid: 606a4ab1ab795a0499300cd5245e8b3f
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   m_configObjects: {}

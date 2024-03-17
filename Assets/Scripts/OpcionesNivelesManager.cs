@@ -19,6 +19,7 @@ public class OpcionesNivelesManager : MonoBehaviour
 
     public int scoreFinal;
     public int intentosFinales;
+    public string tiempoRestante;
 
     public enum CantidadCartas
     {
