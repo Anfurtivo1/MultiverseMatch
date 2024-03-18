@@ -21,6 +21,10 @@ public class OpcionesNivelesManager : MonoBehaviour
     public int intentosFinales;
     public string tiempoRestante;
 
+    public AudioSource src;
+
+    public AudioClip sonidoBoton;
+
     public enum CantidadCartas
     {
         sinCartas = 0,
@@ -75,6 +79,9 @@ public class OpcionesNivelesManager : MonoBehaviour
     {
         if (_juego.cantidadCartas == CantidadCartas.sinCartas)
         {
+            src.clip = sonidoBoton;
+            src.Play();
+
             _opciones++;
         }
         _juego.cantidadCartas = cantidadCartas;
@@ -84,6 +91,9 @@ public class OpcionesNivelesManager : MonoBehaviour
     {
         if (_juego.estiloJuego == EstiloJuego.SinTema)
         {
+            src.clip = sonidoBoton;
+            src.Play();
+
             _opciones++;
         }
         _juego.estiloJuego = estiloJuego;

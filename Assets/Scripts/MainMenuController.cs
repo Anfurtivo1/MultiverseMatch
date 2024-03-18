@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,32 +12,28 @@ public class MainMenuController : MonoBehaviour
     {
         src.clip = sonidoBoton;
         src.Play();
-
-        SceneManager.LoadScene(scene);
+        StartCoroutine(loadScene(scene));
     }
 
     public void BtnRanking(string scene)
     {
         src.clip = sonidoBoton;
         src.Play();
-
-        SceneManager.LoadScene(scene);
+        StartCoroutine(loadScene(scene));
     }
 
     public void BtnOpciones(string scene)
     {
         src.clip = sonidoBoton;
         src.Play();
-
-        SceneManager.LoadScene(scene);
+        StartCoroutine(loadScene(scene));
     }
 
     public void BtnCreditos(string scene)
     {
         src.clip = sonidoBoton;
         src.Play();
-
-        SceneManager.LoadScene(scene);
+        StartCoroutine(loadScene(scene));
     }
 
     public void BtnSalir()
@@ -50,6 +47,12 @@ public class MainMenuController : MonoBehaviour
         src.Play();
 
         OpcionesNivelesManager.instanciaOpcionesNivel.ResetOpciones();
+        StartCoroutine(loadScene(scene));
+    }
+
+    private IEnumerator loadScene(string scene)
+    {
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(scene);
     }
 
