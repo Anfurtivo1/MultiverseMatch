@@ -61,6 +61,16 @@ public class CartasManager : MonoBehaviour
     public GameObject tapeteEspacio;
     public GameObject tapeteMedieval;
 
+    public AudioClip musicaNivelOeste;
+    public AudioClip musicaNivelEspacio;
+    public AudioClip musicaNivelMedieval;
+
+    public AudioClip sfxGirarCarta;
+    public AudioClip sfxAcertado;
+    public AudioClip sfxErroneo;
+
+    public AudioSource src;
+    public AudioSource srcCarta;
 
 
     // Start is called before the first frame update
@@ -90,6 +100,9 @@ public class CartasManager : MonoBehaviour
             bgEspacio.SetActive(false);
             bgMedieval.SetActive(false);
 
+            src.clip = musicaNivelOeste;
+            src.Play();
+
             tapeteOeste.SetActive(true);
             tapeteEspacio.SetActive(false);
             tapeteMedieval.SetActive(false);
@@ -99,6 +112,9 @@ public class CartasManager : MonoBehaviour
             bgOeste.SetActive(false);
             bgEspacio.SetActive(true);
             bgMedieval.SetActive(false);
+
+            src.clip = musicaNivelEspacio;
+            src.Play();
 
             tapeteOeste.SetActive(false);
             tapeteEspacio.SetActive(true);
@@ -110,7 +126,9 @@ public class CartasManager : MonoBehaviour
             bgEspacio.SetActive(false);
             bgMedieval.SetActive(true);
 
-            
+            src.clip = musicaNivelMedieval;
+            src.Play();
+
             tapeteOeste.SetActive(false);
             tapeteEspacio.SetActive(false);
             tapeteMedieval.SetActive(true);
@@ -331,6 +349,8 @@ public class CartasManager : MonoBehaviour
 
     public void GirarCarta(Carta carta)
     {
+        srcCarta.clip = sfxGirarCarta;
+        srcCarta.Play();
         if (_primeraCartaRevelada == null)
         {
             _primeraCartaRevelada = carta;
@@ -352,6 +372,11 @@ public class CartasManager : MonoBehaviour
         Debug.Log("La primera carta tiene un id de: "+ carta1Id + " y la segunda carta tiene un id de: "+ carta2Id);
         if (carta1Id == carta2Id)
         {
+            yield return new WaitForSeconds(0.3f);
+
+            srcCarta.clip = sfxAcertado;
+            srcCarta.Play();
+
             tiempo = tiempo + 20;
 
             score++;
@@ -363,6 +388,9 @@ public class CartasManager : MonoBehaviour
         {
 
             yield return new WaitForSeconds(2);
+
+            srcCarta.clip = sfxErroneo;
+            srcCarta.Play();
 
             Debug.Log("No son iguales");
             _primeraCartaRevelada.animator.SetTrigger("Voltear");
