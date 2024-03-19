@@ -1,32 +1,57 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+
+[Serializable]
+public class SaveData
+{
+    public string playerName;
+    public int intentos;
+    public int score;
+
+    // Constructor
+    public SaveData(string _playerName, int _intentos, int _score)
+    {
+        playerName = _playerName;
+        intentos = _intentos;
+        score = _score;
+    }
+
+}
 
 public class RankingManager : MonoBehaviour
 {
+
     public TextMeshProUGUI entriesText;
     public TextMeshProUGUI nombreEntrada;
-    public int maxEntriesPerPage = 10;
 
-    public List<string> allEntries = new List<string>();
+    public int maxEntriesPerPage = 10;
     private int _currentPage = 1;
 
-    public void Start()
-    {
-        UpdateEntriesText();
-    }
+    [SerializeField] string filename;
 
-    // Function to add entries to the ranking system
-    public void AddEntry()
+    List<SaveData> players = new List<SaveData>();
+
+    private void Start()
     {
-        if (entriesText.text != null)
+        if (entriesText != null)
         {
-            allEntries.Add(nombreEntrada.text);
+            players = FileHandler.ReadListFromJSON<SaveData>(filename);
             UpdateEntriesText();
         }
         
+    }
+
+    public void AddNameToList()
+    {
+        players = FileHandler.ReadListFromJSON<SaveData>(filename);
+        players.Add(new SaveData(nombreEntrada.text, OpcionesNivelesManager.instanciaOpcionesNivel.intentosFinales,OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal));
+        nombreEntrada.text = "";
+        FileHandler.SaveToJSON<SaveData>(players, filename);
     }
 
     // Function to update the displayed entries text
@@ -35,11 +60,11 @@ public class RankingManager : MonoBehaviour
         entriesText.text = "";
 
         int startIndex = (_currentPage - 1) * maxEntriesPerPage;
-        int endIndex = Mathf.Min(startIndex + maxEntriesPerPage, allEntries.Count);
+        int endIndex = Mathf.Min(startIndex + maxEntriesPerPage, players.Count);
 
         for (int i = startIndex; i < endIndex; i++)
         {
-            entriesText.text += allEntries[i] + "\n";
+            entriesText.text += "nombre: "+players[i].playerName + " score: " + players[i].score + " intentos: " + players[i].intentos + "\n";
         }
     }
 
