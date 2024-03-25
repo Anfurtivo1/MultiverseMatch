@@ -15,16 +15,20 @@ public class MainMenuController : MonoBehaviour
 
     public void Update()
     {
-        if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown)
-        {
-            botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-            txtTitulo.fontSize = 30;
-        }
 
-        if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
+        if (txtTitulo != null && botonesMenuprincipal != null)
         {
-            botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedRowCount;
-            txtTitulo.fontSize = 80;
+            if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown)
+            {
+                botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+                txtTitulo.fontSize = 30;
+            }
+
+            if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
+            {
+                botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedRowCount;
+                txtTitulo.fontSize = 80;
+            }
         }
 
     }

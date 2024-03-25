@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static OpcionesNivelesManager;
 
 public class CartasManager : MonoBehaviour
@@ -72,6 +73,9 @@ public class CartasManager : MonoBehaviour
     public AudioSource src;
     public AudioSource srcCarta;
 
+    public GameObject panelIzq;
+    public GameObject panelDer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -137,8 +141,30 @@ public class CartasManager : MonoBehaviour
 
     }
 
+    private void comprobarUI()
+    {
+        if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown)
+        {
+            panelDer.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            panelIzq.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            //botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            //txtTitulo.fontSize = 30;
+        }
+
+        if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
+        {
+            panelDer.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+            panelIzq.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+            //botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedRowCount;
+            //txtTitulo.fontSize = 80;
+        }
+    }
+
     private void Update()
     {
+        comprobarUI();
+
+
         if (empezarTiempo && tiempo >= 0 && ganar == false)
         {
             float nuevoTiempo = tiempo - Time.deltaTime;
