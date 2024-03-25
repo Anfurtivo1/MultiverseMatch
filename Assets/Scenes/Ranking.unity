@@ -579,6 +579,7 @@ MonoBehaviour:
   nombreEntrada: {fileID: 0}
   maxEntriesPerPage: 1
   filename: PlayerScores.json
+  nextPageButton: {fileID: 1861858506}
 --- !u!1 &559099126
 GameObject:
   m_ObjectHideFlags: 0

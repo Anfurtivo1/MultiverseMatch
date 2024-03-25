@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using Button = UnityEngine.UI.Button;
 
 [Serializable]
 public class SaveData
@@ -36,6 +37,8 @@ public class RankingManager : MonoBehaviour
 
     List<SaveData> players = new List<SaveData>();
 
+    public Button nextPageButton;
+
     private void Start()
     {
         if (entriesText != null)
@@ -66,6 +69,9 @@ public class RankingManager : MonoBehaviour
         {
             entriesText.text += "nombre: "+players[i].playerName + "\n score: " + players[i].score + "\n intentos: " + players[i].intentos + "\n";
         }
+
+        nextPageButton.interactable = endIndex < players.Count;
+
     }
 
     // Function to navigate to the next page
