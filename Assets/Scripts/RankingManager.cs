@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
@@ -39,6 +40,9 @@ public class RankingManager : MonoBehaviour
 
     public Button nextPageButton;
 
+    public TextMeshProUGUI noRegistrado;
+    public TextMeshProUGUI Registrado;
+
     private void Start()
     {
         if (entriesText != null)
@@ -51,10 +55,20 @@ public class RankingManager : MonoBehaviour
 
     public void AddNameToList()
     {
-        players = FileHandler.ReadListFromJSON<SaveData>(filename);
-        players.Add(new SaveData(nombreEntrada.text, OpcionesNivelesManager.instanciaOpcionesNivel.intentosFinales,OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal));
-        nombreEntrada.text = "";
-        FileHandler.SaveToJSON<SaveData>(players, filename);
+        if (nombreEntrada.text !="" && nombreEntrada.text.Trim() != "")
+        {
+            players = FileHandler.ReadListFromJSON<SaveData>(filename);
+            players.Add(new SaveData(nombreEntrada.text, OpcionesNivelesManager.instanciaOpcionesNivel.intentosFinales, OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal));
+            nombreEntrada.text = "";
+            FileHandler.SaveToJSON<SaveData>(players, filename);
+            Registrado.GameObject().SetActive(true);
+            noRegistrado.GameObject().SetActive(false);
+        }
+        else
+        {
+            Registrado.GameObject().SetActive(false);
+            noRegistrado.GameObject().SetActive(true);
+        }
     }
 
     // Function to update the displayed entries text

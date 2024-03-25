@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -37, y: -127}
+  m_AnchoredPosition: {x: -6, y: -127}
   m_SizeDelta: {x: 126.51, y: 63.71997}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &138942491
@@ -580,6 +580,8 @@ MonoBehaviour:
   maxEntriesPerPage: 1
   filename: PlayerScores.json
   nextPageButton: {fileID: 1861858506}
+  noRegistrado: {fileID: 0}
+  Registrado: {fileID: 0}
 --- !u!1 &559099126
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,7 +997,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -83, y: -330}
+  m_AnchoredPosition: {x: -83, y: -244}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1715279411
@@ -1129,7 +1131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 138, y: -330}
+  m_AnchoredPosition: {x: 138, y: -244}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1861858506
@@ -1451,11 +1453,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 637331291378150680, guid: 5db516792166d134ab139bb24f14a71b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 637331291378150680, guid: 5db516792166d134ab139bb24f14a71b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -428
+      value: -358
       objectReference: {fileID: 0}
     - target: {fileID: 637331291378150680, guid: 5db516792166d134ab139bb24f14a71b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
