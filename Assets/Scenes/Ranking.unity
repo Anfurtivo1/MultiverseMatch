@@ -577,7 +577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entriesText: {fileID: 559099128}
   nombreEntrada: {fileID: 0}
-  maxEntriesPerPage: 5
+  maxEntriesPerPage: 1
   filename: PlayerScores.json
 --- !u!1 &559099126
 GameObject:

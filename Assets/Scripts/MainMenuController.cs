@@ -15,21 +15,25 @@ public class MainMenuController : MonoBehaviour
 
     public void Update()
     {
-
-        if (txtTitulo != null && botonesMenuprincipal != null)
+        if (Application.platform == RuntimePlatform.Android)
         {
-            if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown)
+            Debug.Log("Running on Android platform.");
+            if (txtTitulo != null && botonesMenuprincipal != null)
             {
-                botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-                txtTitulo.fontSize = 30;
-            }
+                if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown)
+                {
+                    botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+                    txtTitulo.fontSize = 30;
+                }
 
-            if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
-            {
-                botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedRowCount;
-                txtTitulo.fontSize = 80;
+                if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
+                {
+                    botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedRowCount;
+                    txtTitulo.fontSize = 80;
+                }
             }
         }
+        
 
     }
     public void BtnStart(string scene)
@@ -70,7 +74,12 @@ public class MainMenuController : MonoBehaviour
         src.clip = sonidoBoton;
         src.Play();
 
-        OpcionesNivelesManager.instanciaOpcionesNivel.ResetOpciones();
+        if (OpcionesNivelesManager.instanciaOpcionesNivel != null)
+        {
+            OpcionesNivelesManager.instanciaOpcionesNivel.ResetOpciones();
+
+        }
+        
         StartCoroutine(loadScene(scene));
     }
 

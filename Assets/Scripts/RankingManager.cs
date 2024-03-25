@@ -64,7 +64,7 @@ public class RankingManager : MonoBehaviour
 
         for (int i = startIndex; i < endIndex; i++)
         {
-            entriesText.text += "nombre: "+players[i].playerName + " score: " + players[i].score + " intentos: " + players[i].intentos + "\n";
+            entriesText.text += "nombre: "+players[i].playerName + "\n score: " + players[i].score + "\n intentos: " + players[i].intentos + "\n";
         }
     }
 
