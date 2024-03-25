@@ -147,6 +147,12 @@ public class CartasManager : MonoBehaviour
         {
             panelDer.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             panelIzq.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+
+            //for (int i = 0; i < cartaList.Count; i++)
+            //{
+            //    cartaList[i].transform.localScale = new Vector3(0.9f, 0.9f, 0.01f);
+            //}
+
             //botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
             //txtTitulo.fontSize = 30;
         }
@@ -155,6 +161,12 @@ public class CartasManager : MonoBehaviour
         {
             panelDer.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
             panelIzq.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+
+            //for (int i = 0; i < cartaList.Count; i++)
+            //{
+            //    cartaList[i].transform.localScale = new Vector3(2.0f, 2.0f, 0.01f);
+            //}
+
             //botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedRowCount;
             //txtTitulo.fontSize = 80;
         }

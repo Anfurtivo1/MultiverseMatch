@@ -1134,7 +1134,7 @@ MonoBehaviour:
   cartaZonaSpawn: {fileID: 702013680}
   cartaList: []
   scaledDown: 0
-  posicionInicial: {x: -2, y: 4}
+  posicionInicial: {x: -2.2, y: 3.5}
   espacioCartas: {x: 1.5, y: 1.5}
   espacioCartas15: {x: 1.08, y: 1.22}
   espacioCartas20: {x: 1.08, y: 1}
