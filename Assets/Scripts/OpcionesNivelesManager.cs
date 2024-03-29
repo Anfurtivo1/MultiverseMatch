@@ -25,7 +25,7 @@ public class OpcionesNivelesManager : MonoBehaviour
 
     public AudioClip sonidoBoton;
 
-    public GameObject panelCarga;
+    GameObject panelCarga;
 
     public enum CantidadCartas
     {
@@ -75,6 +75,7 @@ public class OpcionesNivelesManager : MonoBehaviour
         _juego = new Juego();
         ResetOpciones();
 
+
     }
 
     public void ElegirCantidadCartas(CantidadCartas cantidadCartas)
@@ -123,6 +124,9 @@ public class OpcionesNivelesManager : MonoBehaviour
     {
         if (_opciones == numeroOpciones)
         {
+            GameObject Canvas = GameObject.Find("Canvas");
+            panelCarga = Canvas.transform.Find("LoadingPanel").gameObject;
+
             panelCarga.SetActive(true);
             return _opciones == numeroOpciones;
         }

@@ -1456,7 +1456,7 @@ MonoBehaviour:
   tiempoRestante: 
   src: {fileID: 1305434706}
   sonidoBoton: {fileID: 8300000, guid: 796fd7399328fa641937ca41394343d5, type: 3}
-  panelCarga: {fileID: 1753331199}
+  panelCarga: {fileID: 970905923981546485, guid: dea93f5ddbe5a534e8999f3177a3d56d, type: 3}
 --- !u!82 &1305434706
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1791,11 +1791,11 @@ GameObject:
   - component: {fileID: 1753331201}
   m_Layer: 5
   m_Name: LoadingPanel
-  m_TagString: Untagged
+  m_TagString: LoadingScreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1753331200
 RectTransform:
   m_ObjectHideFlags: 0
