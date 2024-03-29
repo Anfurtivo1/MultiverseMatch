@@ -12,6 +12,7 @@ public class MainMenuController : MonoBehaviour
 
     public TextMeshProUGUI txtTitulo;
     public GridLayoutGroup botonesMenuprincipal;
+    public GameObject menuOpciones;
 
     public void Update()
     {
@@ -50,11 +51,18 @@ public class MainMenuController : MonoBehaviour
         StartCoroutine(loadScene(scene));
     }
 
-    public void BtnOpciones(string scene)
+    public void BtnOpciones()
     {
         src.clip = sonidoBoton;
         src.Play();
-        StartCoroutine(loadScene(scene));
+        menuOpciones.SetActive(true);
+    }
+
+    public void BtnSalirOpciones()
+    {
+        src.clip = sonidoBoton;
+        src.Play();
+        menuOpciones.SetActive(false);
     }
 
     public void BtnCreditos(string scene)

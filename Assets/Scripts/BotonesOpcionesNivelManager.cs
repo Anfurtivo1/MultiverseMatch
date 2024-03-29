@@ -36,6 +36,7 @@ public class BotonesOpcionesNivelManager : MonoBehaviour
 
         if (OpcionesNivelesManager.instanciaOpcionesNivel.OpcionesPreparadas())
         {
+            
             SceneManager.LoadScene(NombreNivel);
         }
 

@@ -25,6 +25,8 @@ public class OpcionesNivelesManager : MonoBehaviour
 
     public AudioClip sonidoBoton;
 
+    public GameObject panelCarga;
+
     public enum CantidadCartas
     {
         sinCartas = 0,
@@ -119,7 +121,16 @@ public class OpcionesNivelesManager : MonoBehaviour
 
     public bool OpcionesPreparadas()
     {
-        return _opciones == numeroOpciones;
+        if (_opciones == numeroOpciones)
+        {
+            panelCarga.SetActive(true);
+            return _opciones == numeroOpciones;
+        }
+        else
+        {
+            return _opciones == numeroOpciones;
+        }
+        
     }
 
     public string GetNombreDirectorioMaterial()
