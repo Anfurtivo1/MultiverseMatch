@@ -43,6 +43,8 @@ public class RankingManager : MonoBehaviour
     public TextMeshProUGUI noRegistrado;
     public TextMeshProUGUI Registrado;
 
+    public Button AnadirEntrada;
+
     private void Start()
     {
         if (entriesText != null)
@@ -55,14 +57,30 @@ public class RankingManager : MonoBehaviour
 
     public void AddNameToList()
     {
-        if (nombreEntrada.text !="" && nombreEntrada.text.Trim() != "")
+        string newName = nombreEntrada.text.ToString();
+
+        //Debug.Log(trimmedValue+ " Esta vacio?: "+ string.IsNullOrEmpty(trimmedValue));
+
+        if (Convert.ToString((object)nombreEntrada.text) == "")
+        {
+            Debug.Log("Esta vacio");
+        }
+
+        if (Convert.ToString((object)nombreEntrada.text) != "")
+        {
+            Debug.Log("No esta vacio");
+        }
+
+        if (!string.IsNullOrWhiteSpace(newName))
         {
             players = FileHandler.ReadListFromJSON<SaveData>(filename);
             players.Add(new SaveData(nombreEntrada.text, OpcionesNivelesManager.instanciaOpcionesNivel.intentosFinales, OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal));
             nombreEntrada.text = "";
+            AnadirEntrada.interactable = false;
             FileHandler.SaveToJSON<SaveData>(players, filename);
             Registrado.GameObject().SetActive(true);
             noRegistrado.GameObject().SetActive(false);
+
         }
         else
         {

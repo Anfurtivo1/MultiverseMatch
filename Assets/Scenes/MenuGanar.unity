@@ -1202,6 +1202,7 @@ MonoBehaviour:
   nextPageButton: {fileID: 0}
   noRegistrado: {fileID: 716284210}
   Registrado: {fileID: 36739431}
+  AnadirEntrada: {fileID: 1544880012}
 --- !u!1 &559099126
 GameObject:
   m_ObjectHideFlags: 0
