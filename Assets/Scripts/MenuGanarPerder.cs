@@ -14,6 +14,10 @@ public class MenuGanarPerder : MonoBehaviour
     public GameObject bgEspacio;
     public GameObject bgMedieval;
 
+    public GameObject medOro;
+    public GameObject medPlata;
+    public GameObject medBronce;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,19 @@ public class MenuGanarPerder : MonoBehaviour
 
                 if (SceneManager.GetActiveScene().name == "MenuGanar")
                 {
+                    if (OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal == 20)
+                    {
+                        medOro.SetActive(true);
+                    }
+                    else if(OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal == 15)
+                    {
+                        medPlata.SetActive(true);
+                    }
+                    else if (OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal == 10)
+                    {
+                        medBronce.SetActive(true);
+                    }
+
                     textoTiempoRestante.text = "Tiempo restante: "+ OpcionesNivelesManager.instanciaOpcionesNivel.tiempoRestante;
                 }
 
@@ -38,6 +55,20 @@ public class MenuGanarPerder : MonoBehaviour
 
                 if (SceneManager.GetActiveScene().name == "MenuGanar")
                 {
+
+                    if (OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal == 20)
+                    {
+                        medOro.SetActive(true);
+                    }
+                    else if (OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal == 15)
+                    {
+                        medPlata.SetActive(true);
+                    }
+                    else if (OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal == 10)
+                    {
+                        medBronce.SetActive(true);
+                    }
+
                     textoTiempoRestante.text = "Tiempo restante: " + OpcionesNivelesManager.instanciaOpcionesNivel.tiempoRestante;
                 }
 
@@ -49,6 +80,20 @@ public class MenuGanarPerder : MonoBehaviour
 
                 if (SceneManager.GetActiveScene().name == "MenuGanar")
                 {
+
+                    if (OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal == 20)
+                    {
+                        medOro.SetActive(true);
+                    }
+                    else if (OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal == 15)
+                    {
+                        medPlata.SetActive(true);
+                    }
+                    else if (OpcionesNivelesManager.instanciaOpcionesNivel.scoreFinal == 10)
+                    {
+                        medBronce.SetActive(true);
+                    }
+
                     textoTiempoRestante.text = "Tiempo restante: " + OpcionesNivelesManager.instanciaOpcionesNivel.tiempoRestante;
                 }
 
