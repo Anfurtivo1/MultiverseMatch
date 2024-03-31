@@ -21,6 +21,6 @@ public class Opcionesmanager : MonoBehaviour
 
     public void changeVolumenFX(float slidervalue)
     {
-        audioMixer.SetFloat("SFX", Mathf.Log10(slidervalue) * 20);
+        audioMixer.SetFloat("SFXVolume", Mathf.Log10(slidervalue) * 20);
     }
 }

@@ -14,6 +14,24 @@ public class MainMenuController : MonoBehaviour
     public GridLayoutGroup botonesMenuprincipal;
     public GameObject menuOpciones;
 
+    public Slider sliderMaster;
+    public Slider sliderMusica;
+    public Slider sliderSFX;
+
+    //public TextMeshProUGUI txtMaster;
+    //public TextMeshProUGUI txtMusica;
+    //public TextMeshProUGUI txtFx;
+
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("Master") || PlayerPrefs.HasKey("Musica") || PlayerPrefs.HasKey("SFX"))
+        {
+            sliderMaster.value = PlayerPrefs.GetFloat("Master");
+            sliderMusica.value = PlayerPrefs.GetFloat("Musica");
+            sliderSFX.value = PlayerPrefs.GetFloat("SFX");
+        }
+    }
+
     public void Update()
     {
         if (Application.platform == RuntimePlatform.Android)
@@ -63,6 +81,10 @@ public class MainMenuController : MonoBehaviour
         src.clip = sonidoBoton;
         src.Play();
         menuOpciones.SetActive(false);
+        PlayerPrefs.SetFloat("Master",sliderMaster.value);
+        PlayerPrefs.SetFloat("Musica", sliderMusica.value);
+        PlayerPrefs.SetFloat("SFX", sliderSFX.value);
+        PlayerPrefs.Save();
     }
 
     public void BtnCreditos(string scene)
