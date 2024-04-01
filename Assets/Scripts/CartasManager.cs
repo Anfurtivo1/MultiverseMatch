@@ -147,28 +147,12 @@ public class CartasManager : MonoBehaviour
         {
             panelDer.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             panelIzq.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-
-            //for (int i = 0; i < cartaList.Count; i++)
-            //{
-            //    cartaList[i].transform.localScale = new Vector3(0.9f, 0.9f, 0.01f);
-            //}
-
-            //botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-            //txtTitulo.fontSize = 30;
         }
 
         if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
         {
             panelDer.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
             panelIzq.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
-
-            //for (int i = 0; i < cartaList.Count; i++)
-            //{
-            //    cartaList[i].transform.localScale = new Vector3(2.0f, 2.0f, 0.01f);
-            //}
-
-            //botonesMenuprincipal.constraint = GridLayoutGroup.Constraint.FixedRowCount;
-            //txtTitulo.fontSize = 80;
         }
     }
 
@@ -188,11 +172,6 @@ public class CartasManager : MonoBehaviour
         //Menu de perder
         if (tiempo <= 0)
         {
-            //tiempo = 0;
-            //Debug.Log("Has perdido");
-            //menuPerder.SetActive(true);
-            //girable = false;
-
             instanciaOpcionesNivel.scoreFinal = score;
             instanciaOpcionesNivel.intentosFinales = intentos;
 
@@ -203,10 +182,6 @@ public class CartasManager : MonoBehaviour
         //Menu de ganar
         if(OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas10 && score == 10)
         {
-            //Debug.Log("Has ganado");
-            //ganar = true;
-            //girable = false;
-            //menuGanar.SetActive(true);
             instanciaOpcionesNivel.scoreFinal = score;
             instanciaOpcionesNivel.intentosFinales = intentos;
             instanciaOpcionesNivel.tiempoRestante = tiempo.ToString("f0");
@@ -217,10 +192,6 @@ public class CartasManager : MonoBehaviour
 
         if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas15 && score == 15)
         {
-            //Debug.Log("Has ganado");
-            //ganar = true;
-            //girable = false;
-            //menuGanar.SetActive(true);
 
             instanciaOpcionesNivel.scoreFinal = score;
             instanciaOpcionesNivel.intentosFinales = intentos;
@@ -231,10 +202,6 @@ public class CartasManager : MonoBehaviour
 
         if (OpcionesNivelesManager.instanciaOpcionesNivel.GetCantidadCartas() == CantidadCartas.Cartas20 && score == 20)
         {
-            //Debug.Log("Has ganado");
-            //ganar = true;
-            //girable = false;
-            //menuGanar.SetActive(true);
 
             instanciaOpcionesNivel.scoreFinal = score;
             instanciaOpcionesNivel.intentosFinales = intentos;

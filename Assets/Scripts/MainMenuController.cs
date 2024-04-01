@@ -18,10 +18,6 @@ public class MainMenuController : MonoBehaviour
     public Slider sliderMusica;
     public Slider sliderSFX;
 
-    //public TextMeshProUGUI txtMaster;
-    //public TextMeshProUGUI txtMusica;
-    //public TextMeshProUGUI txtFx;
-
     private void Start()
     {
         if (PlayerPrefs.HasKey("Master") || PlayerPrefs.HasKey("Musica") || PlayerPrefs.HasKey("SFX"))

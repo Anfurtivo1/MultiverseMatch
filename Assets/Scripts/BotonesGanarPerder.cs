@@ -11,9 +11,4 @@ public class BotonesGanarPerder : MonoBehaviour
         SceneManager.LoadScene("MenuPrincipal");
     }
 
-    public void ReiniciarNivel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
 }

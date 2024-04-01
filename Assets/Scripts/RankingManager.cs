@@ -59,8 +59,6 @@ public class RankingManager : MonoBehaviour
     {
         string newName = nombreEntrada.text.ToString();
 
-        //Debug.Log(trimmedValue+ " Esta vacio?: "+ string.IsNullOrEmpty(trimmedValue));
-
         if (Convert.ToString((object)nombreEntrada.text) == "")
         {
             Debug.Log("Esta vacio");

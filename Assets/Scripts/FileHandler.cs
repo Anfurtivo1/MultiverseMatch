@@ -58,30 +58,6 @@ public static class FileHandler
 
     private static void WriteFile(string path, string content)
     {
-        //if (File.Exists(path))
-        //{
-        //    FileStream fileStream = new FileStream(path, FileMode.Append);
-
-        //    using (StreamWriter writer = new StreamWriter(fileStream))
-        //    {
-
-        //        writer.Write(content);
-        //        Debug.Log("Escrito correctamente");
-        //    }
-
-        //}
-        //else
-        //{
-        //    FileStream fileStream = new FileStream(path, FileMode.Create);
-
-        //    using (StreamWriter writer = new StreamWriter(fileStream))
-        //    {
-
-        //        writer.Write(content);
-        //        Debug.Log("Escrito correctamente");
-        //    }
-
-        //}
 
         FileStream fileStream = new FileStream(path, FileMode.Create);
 
