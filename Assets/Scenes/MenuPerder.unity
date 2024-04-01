@@ -429,6 +429,10 @@ MonoBehaviour:
   sonidoBoton: {fileID: 0}
   txtTitulo: {fileID: 0}
   botonesMenuprincipal: {fileID: 0}
+  menuOpciones: {fileID: 0}
+  sliderMaster: {fileID: 0}
+  sliderMusica: {fileID: 0}
+  sliderSFX: {fileID: 0}
 --- !u!1 &777112863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,9 +1087,12 @@ MonoBehaviour:
   textoScore: {fileID: 1825296385}
   textoIntentos: {fileID: 1712581901}
   textoTiempoRestante: {fileID: 0}
-  bgOeste: {fileID: 0}
-  bgEspacio: {fileID: 0}
-  bgMedieval: {fileID: 0}
+  bgOeste: {fileID: 1965575290}
+  bgEspacio: {fileID: 777112863}
+  bgMedieval: {fileID: 1748646794}
+  medOro: {fileID: 0}
+  medPlata: {fileID: 0}
+  medBronce: {fileID: 0}
 --- !u!1 &1965575290
 GameObject:
   m_ObjectHideFlags: 0
